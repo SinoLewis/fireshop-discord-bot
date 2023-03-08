@@ -1,37 +1,19 @@
-# A. Discord js DEV BOT
+# Fireshop Discord Bot TODOs
 
-## 1. Development Server configuration
+## **1. Permisions**
 
-## 2. Bot Registration
+## **2. Gateway Intents**
 
-## 3. Creating slash commands
+## **3. Error Handling**
 
-> Three key pieces of code that need to be written.
+## **4. Message handling & Partial Structures**
 
-1. The individual command files, containing their definitions and functionality.
-2. The command handler, which dynamically reads the files and executes the commands.
-3. The command deployment script, to register your slash commands with Discord so they appear in the interface.
+> Fetch only the properties you need from messages
 
-> Individual command files
+## **5. DevSecOps**
 
-Create a new folder named commands, which is where you'll store all of your command files.
+> Server Deployment (Cloud or Local)
 
-## 4. Command handling
+## **6. Sharding**
 
-> Loading command files
-
-> Receiving command interactions
-
-> Executing commands
-
-## 5. Registering slash commands
-
-> Guild commands
-
-> Global commands
-
-> Where to deploy
-
-## 6. Event Handling
-
-# B. Slash Commands
+> Distribute the load of a large bot across multiple instances of the bot running concurrently
