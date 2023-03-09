@@ -5,11 +5,15 @@ module.exports = {
     .setName("delivery")
     .setDescription("Set the delivery price for a specific order.")
     .addStringOption((option) =>
-      option.setName("order-id").setDescription("The ID for the order")
+      option
+        .setName("order-id")
+        .setDescription("The ID for the order")
+        .setRequired(true)
     )
     .addNumberOption((option) =>
       option
         .setName("delivery-price")
         .setDescription("The Price for the delivery")
+        .setRequired(true)
     ),
 };
