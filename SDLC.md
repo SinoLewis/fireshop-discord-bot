@@ -2,16 +2,16 @@
 
 ## **1. Bot Creation**
 
-> 1. ready & interactionCreate
+> 1. ready & interactionCreate (completed)
 
 ## **2. Slash Commands**
 
-> 1. deliver params
+> 1. deliver params (completed)
 
 - Unique Id of Order (required)
 - price (required)
 
-> 2. cancel params
+> 2. cancel params (completed)
 
 - Unique Id of Order (required)
 
