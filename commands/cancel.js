@@ -5,6 +5,9 @@ module.exports = {
     .setName("cancel")
     .setDescription("Cancel delivery for an order.")
     .addStringOption((option) =>
-      option.setName("order-id").setDescription("The ID for the order")
-    )
+      option
+        .setName("order-id")
+        .setDescription("The ID for the order")
+        .setRequired(true)
+    ),
 };
