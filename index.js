@@ -1,12 +1,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, GatewayIntentBits, Events } = require("discord.js");
-const { createClient } = require("@supabase/supabase-js");
-const {
-  token,
-  VITE_SUPABASE_URL,
-  VITE_SUPABASE_ANON_KEY,
-} = require("./config.json");
+const { token } = require("./config.json");
+const { updateOrder, cancelOrder } = require("./utils/supabase.js");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -25,49 +21,23 @@ for (const file of eventFiles) {
   }
 }
 
-const supabase = createClient(VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY);
-
-async function getProducts() {
-  try {
-    const { data, error } = await supabase.from("products").select();
-    console.log("PRODUCTS DATA: ", data);
-  } catch (error) {
-    console.log("PRODUCTS ERROR: ", error.message);
-  }
-}
-
-// TODO
-// 1. Discord slash options, choices, validation
-//  - /order cmd ?id=order-id ?delivery=price
-//  - reply w/ updated order db
-// 2. update db logic
-//  - updates order db with input params
-// 3. fireshop client supa subscribe for db changes
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "ping") {
-    getProducts();
-    await interaction.reply({ content: "Secret Pong!", ephemeral: true });
-  }
-
-  if (interaction.commandName === "user") {
+  if (interaction.commandName === "delivery") {
+    let id = interaction.options.getString("order-id");
+    let price = interaction.options.getNumber("delivery-price");
+    let data = await updateOrder(id, price);
     await interaction.reply({
-      content: `This command was run by ${interaction.user.username}, who joined on ${interaction.member.joinedAt}.`,
+      content: `Delivery PRICE: ${data.delivery_price} \n Delivery APPROVED: ${data.approved}`,
       ephemeral: true,
     });
   }
-
-  if (interaction.commandName === "server") {
+  if (interaction.commandName === "cancel") {
+    let id = interaction.options.getString("order-id");
+    let data = await cancelOrder(id);
     await interaction.reply({
-      content: `This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`,
-      ephemeral: true,
-    });
-  }
-
-  if (interaction.commandName === "user") {
-    await interaction.reply({
-      content: `This command was run by ${interaction.user.username}, who joined on ${interaction.member.joinedAt}.`,
+      content: `Delivery CANCELLED  for ORDER: ${id} \nDelivery APPROVED: ${data.approved}`,
       ephemeral: true,
     });
   }
