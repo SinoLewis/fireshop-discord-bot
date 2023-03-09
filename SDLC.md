@@ -1,14 +1,31 @@
 # Fireshop Discord Bot TODOs
 
-## **1. Permisions**
+## **1. Bot Creation**
 
-## **2. Gateway Intents**
+> 1. ready & interactionCreate
 
-## **3. Error Handling**
+## **2. Slash Commands**
 
-## **4. Message handling & Partial Structures**
+> 1. deliver params
 
-> Fetch only the properties you need from messages
+- Unique Id of Order (required)
+- price (required)
+
+> 2. cancel params
+
+- Unique Id of Order (required)
+
+<!-- ## **3. Interactions** -->
+
+## **4. Intermediate APIs**
+
+### **4.1. Embeds**
+
+### **4.2. Permisions**
+
+### **4.3. Gateway Intents**
+
+### **4.4. Error Handling**
 
 ## **5. DevSecOps**
 
@@ -17,3 +34,11 @@
 ## **6. Sharding**
 
 > Distribute the load of a large bot across multiple instances of the bot running concurrently
+
+## **7. OAuth2**
+
+> OAuth2 enables application developers to build applications that utilize authentication and data from the Discord API.
+
+## **8. Improve DEV envrinoment**
+
+> Managing your bot process with PM2
